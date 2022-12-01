@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Day 1" type="JetRunConfigurationType">
     <option name="MAIN_CLASS_NAME" value="dev.heemskerk.aoc.day1.MainKt" />
-    <module name="advent-of-code-2022.main" />
+    <module name="AOC-2022.main" />
     <shortenClasspath name="NONE" />
     <method v="2">
       <option name="Make" enabled="true" />
