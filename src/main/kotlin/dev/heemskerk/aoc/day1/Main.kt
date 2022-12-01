@@ -22,7 +22,7 @@ fun main() {
 }
 
 private fun File.getCalories(): List<List<Int>> {
-    return this.readText().split("\n\n").map { elf ->
+    return readText().split("\n\n").map { elf ->
         elf.split("\n").map { calories ->
             calories.toInt()
         }
