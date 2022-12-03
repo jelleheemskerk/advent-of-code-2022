@@ -5,29 +5,29 @@ import java.io.File
 /**
  * https://adventofcode.com/2022/day/2
  */
-enum class HandShape {
+private enum class HandShape {
     ROCK,
     PAPER,
     SCISSORS,
 }
 
-val predictionCodes = listOf(
+private val predictionCodes = listOf(
     "A",
     "B",
     "C",
 )
 
-val responseCodes = listOf(
+private val responseCodes = listOf(
     "X",
     "Y",
     "Z",
 )
 
-val outcomePayoff = responseCodes.mapIndexed { index, code ->
+private val outcomePayoff = responseCodes.mapIndexed { index, code ->
     code to index - 1
 }.toMap()
 
-val payoffMatrix = listOf(
+private val payoffMatrix = listOf(
     listOf(0, -1, 1),
     listOf(1, 0, -1),
     listOf(-1, 1, 0),
@@ -53,14 +53,14 @@ fun main() {
     println("Following the Elf's instructions for the second column, what would your total score be if everything goes exactly according to your strategy guide? [$part2]")
 }
 
-fun File.getGuideLines() = readLines().map {
+private fun File.getGuideLines() = readLines().map {
     Pair(
         it.first().toString(),
         it.last().toString(),
     )
 }
 
-fun calculateScore(response: String, prediction: String): Int {
+private fun calculateScore(response: String, prediction: String): Int {
     val you = response.toHandShape(responseCodes).ordinal
     val opponent = prediction.toHandShape(predictionCodes).ordinal
 
@@ -72,12 +72,12 @@ fun calculateScore(response: String, prediction: String): Int {
     }
 }
 
-fun String.toHandShape(codes: List<String>) = codes.mapIndexed { index, code ->
+private fun String.toHandShape(codes: List<String>) = codes.mapIndexed { index, code ->
     code to HandShape.values()[index] }.toMap()[this] 
         ?: throw IllegalStateException()
 
-fun findShapeForPayoff(shape: HandShape, payoff: Int) =
+private fun findShapeForPayoff(shape: HandShape, payoff: Int) =
     HandShape.values().find { payoffMatrix[it.ordinal][shape.ordinal] == payoff }
         ?: throw IllegalStateException()
 
-fun HandShape.toCode(codes: List<String>) = codes[this.ordinal]
+private fun HandShape.toCode(codes: List<String>) = codes[this.ordinal]
